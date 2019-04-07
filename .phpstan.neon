@@ -1,3 +1,10 @@
 includes:
 	- vendor/phpstan/phpstan-nette/extension.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
+
+parameters:
+	ignoreErrors:
+		-
+			# https://github.com/phpstan/phpstan/issues/2063
+			message: '/^Ternary operator condition is always true\.$/'
+			path: %currentWorkingDirectory%/src/LatteMacros/BaseInputMacros.php
