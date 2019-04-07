@@ -1,0 +1,39 @@
+{
+	"name": "nextras/forms-rendering",
+	"type": "library",
+	"description": "Rendering helpers for Nette Framework Forms.",
+	"keywords": ["nette", "form", "forms", "rendering", "nextras"],
+	"license": ["MIT"],
+	"authors": [
+		{
+			"name": "Nextras Community",
+			"homepage": "https://github.com/nextras/forms-rendering/graphs/contributors"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"nette/forms": "~3.0",
+		"nette/utils": "~3.0",
+		"latte/latte": "~2.5"
+	},
+	"require-dev": {
+		"nette/application": "~3.0",
+		"nette/bootstrap": "~3.0",
+		"nette/di": "~3.0",
+		"nette/robot-loader": "~3.0",
+		"phpstan/phpstan-nette": "0.11",
+		"phpstan/phpstan-shim": "0.11.5",
+		"tracy/tracy": "~2.5"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0-dev"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"autoload": {
+		"psr-4": { "Nextras\\FormsRendering\\": "src/" }
+	}
+}
