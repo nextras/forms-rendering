@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{if $renderer === 'bs3'}
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous">
+	{else}
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+			integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+			crossorigin="anonymous">
+	{/if}
+	<title>Renderer demo</title>
+</head>
+<body>
+<div class="container">
+	<h1>Forms Bootstrap Rendering</h1>
+	<ul class="nav nav-pills">
+		<li n:class="nav-item, $renderer === bs3 ? active" >
+			<a n:class="nav-link, $renderer === bs3 ? active" n:href="this renderer => bs3">BS 3</a>
+		</li>
+		<li n:class="nav-item, $renderer === bs4h ? active" >
+			<a n:class="nav-link, $renderer === bs4h ? active" n:href="this renderer => bs4h">BS 4 horizontal</a>
+		</li>
+		<li n:class="nav-item, $renderer === bs4v ? active">
+			<a n:class="nav-link, $renderer === bs4v ? active" n:href="this renderer => bs4v">BS 4 vertical</a>
+		</li>
+		<li n:class="nav-item, $renderer === bs4i ? active">
+			<a n:class="nav-link, $renderer === bs4i ? active" n:href="this renderer => bs4i">BS 4 inline</a>
+		</li>
+	</ul>
+	<hr>
+	{control form}
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+application:
+	scanDirs: false
+	mapping:
+		*: NextrasDemos\FormsRendering\Renderers\*Module\*Presenter
+
+services:
+	routing.router: Nette\Application\Routers\SimpleRouter('Renderers:default')
