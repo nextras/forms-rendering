@@ -1,0 +1,11 @@
+application:
+	scanDirs: false
+	mapping:
+		*: NextrasDemos\FormsRendering\LatteMacros\*Module\*Presenter
+
+latte:
+	macros:
+		- Nextras\FormsRendering\LatteMacros\Bs3InputMacros::install
+
+services:
+	routing.router: Nette\Application\Routers\SimpleRouter('LatteMacros:default')

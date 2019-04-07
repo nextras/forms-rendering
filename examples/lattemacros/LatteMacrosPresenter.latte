@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link
+		rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+		crossorigin="anonymous">
+	<title>LatteMacros demo</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Form LatteMacros rendering</h1>
+		<hr>
+		{form form class => form-horizontal}
+		<div class="form-group">
+			{label text class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input text}{inputError text}</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-9 col-sm-offset-3">
+				<div class="checkbox">
+				{label checkbox}{input checkbox}{/label}
+				</div>
+				{inputError checkbox}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{label checkbox_list class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input checkbox_list}{inputError checkbox_list}</div>
+		</div>
+		<div class="form-group">
+			{label integer class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input integer}{inputError integer}</div>
+		</div>
+		<div class="form-group">
+			{label multi_select class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input multi_select}{inputError multi_select}</div>
+		</div>
+		<div class="form-group">
+			{label password class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input password}{inputError password}</div>
+		</div>
+		<div class="form-group">
+			{label radio_list class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input radio_list}{inputError radio_list}</div>
+		</div>
+		<div class="form-group">
+			{label select class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input select}{inputError select}</div>
+		</div>
+		<div class="form-group">
+			{label textarea class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input textarea}{inputError textarea}</div>
+		</div>
+		<div class="form-group">
+			{label multi_upload class => "label-control col-sm-3"}
+			<div class="col-sm-9">{input multi_upload}{inputError multi_upload}</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-9 col-sm-offset-3">
+				{input save class => btn-primary}&nbsp;
+				{input secondary class => btn-default}
+			</div>
+		</div>
+		{/form}
+	</div>
+</body>
+</html>
