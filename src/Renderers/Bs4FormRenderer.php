@@ -60,6 +60,16 @@ class Bs4FormRenderer extends DefaultFormRenderer
 	}
 
 
+	public function render(Form $form, string $mode = null): string
+	{
+		if ($this->form !== $form) {
+			$this->controlsInit = false;
+		}
+
+		return parent::render($form, $mode);
+	}
+
+
 	public function renderBegin(): string
 	{
 		$this->controlsInit();
