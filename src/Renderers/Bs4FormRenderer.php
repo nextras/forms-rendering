@@ -14,6 +14,7 @@ use Nette\Forms\Form;
 use Nette\Forms\IControl;
 use Nette\Forms\Rendering\DefaultFormRenderer;
 use Nette\Utils\Html;
+use Nette\Utils\Strings;
 
 
 /**
