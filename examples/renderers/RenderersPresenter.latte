@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{if $renderer === 'bs3'}
+	{if preg_match('(^bs5)', $renderer)}
 		<link
 			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+			integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 			crossorigin="anonymous">
-	{else}
+	{elseif preg_match('(^bs4)', $renderer)}
 		<link
 			rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 			integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+			crossorigin="anonymous">
+	{else}
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
 			crossorigin="anonymous">
 	{/if}
 	<title>Renderer demo</title>
@@ -20,17 +26,29 @@
 <div class="container">
 	<h1>Forms Bootstrap Rendering</h1>
 	<ul class="nav nav-pills">
-		<li n:class="nav-item, $renderer === bs3 ? active" >
-			<a n:class="nav-link, $renderer === bs3 ? active" n:href="this renderer => bs3">BS 3</a>
+		<li n:class="nav-item, $renderer === bs3 ? active">
+			<a n:class="nav-link, $renderer === bs3 ? active" n:href="this renderer => bs3, showBulky => true">BS 3</a>
 		</li>
-		<li n:class="nav-item, $renderer === bs4h ? active" >
-			<a n:class="nav-link, $renderer === bs4h ? active" n:href="this renderer => bs4h">BS 4 horizontal</a>
+		<li n:class="nav-item, $renderer === bs4h ? active">
+			<a n:class="nav-link, $renderer === bs4h ? active" n:href="this renderer => bs4h, showBulky => true">BS 4 horizontal</a>
 		</li>
 		<li n:class="nav-item, $renderer === bs4v ? active">
-			<a n:class="nav-link, $renderer === bs4v ? active" n:href="this renderer => bs4v">BS 4 vertical</a>
+			<a n:class="nav-link, $renderer === bs4v ? active" n:href="this renderer => bs4v, showBulky => true">BS 4 vertical</a>
 		</li>
 		<li n:class="nav-item, $renderer === bs4i ? active">
-			<a n:class="nav-link, $renderer === bs4i ? active" n:href="this renderer => bs4i">BS 4 inline</a>
+			<a n:class="nav-link, $renderer === bs4i ? active" n:href="this renderer => bs4i, showBulky => false">BS 4 inline</a>
+		</li>
+		<li n:class="nav-item, $renderer === bs5h ? active">
+			<a n:class="nav-link, $renderer === bs5h ? active" n:href="this renderer => bs5h, showBulky => true">BS 5 horizontal</a>
+		</li>
+		<li n:class="nav-item, $renderer === bs5v ? active">
+			<a n:class="nav-link, $renderer === bs5v ? active" n:href="this renderer => bs5v, showBulky => true">BS 5 vertical</a>
+		</li>
+		<li n:class="nav-item, $renderer === bs5i ? active">
+			<a n:class="nav-link, $renderer === bs5i ? active" n:href="this renderer => bs5i, showBulky => false">BS 5 inline</a>
+		</li>
+		<li n:class="nav-item" n:if="!$showBulky">
+			<a n:class="nav-link" n:href="this showBulky => true">Show bulky elements</a>
 		</li>
 	</ul>
 	<hr>

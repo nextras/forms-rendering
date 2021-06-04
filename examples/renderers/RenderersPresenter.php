@@ -6,6 +6,7 @@ use Nette\Application\UI\Form;
 use Nette\Application\UI\Presenter;
 use Nextras\FormsRendering\Renderers\Bs3FormRenderer;
 use Nextras\FormsRendering\Renderers\Bs4FormRenderer;
+use Nextras\FormsRendering\Renderers\Bs5FormRenderer;
 use Nextras\FormsRendering\Renderers\FormLayout;
 
 
@@ -17,10 +18,17 @@ class RenderersPresenter extends Presenter
 	 */
 	public $renderer = 'bs3';
 
+	/**
+	 * @var bool
+	 * @persistent
+	 */
+	public $showBulky = true;
+
 
 	public function actionDefault()
 	{
 		$this->template->renderer = $this->renderer;
+		$this->template->showBulky = $this->showBulky;
 	}
 
 
@@ -28,14 +36,20 @@ class RenderersPresenter extends Presenter
 	{
 		$form = new Form();
 		$form->addText('text', 'Name');
+		$form->addText('color', 'Color')->setHtmlType('color');
 		$form->addCheckbox('checkbox', 'Do you agree?');
 		$form->addCheckboxList('checkbox_list', 'CheckboxList', ['A', 'B', 'C']);
 		$form->addInteger('integer', 'How much?');
-		$form->addMultiSelect('multi_select', 'MultiSelect', ['A', 'B', 'C']);
+		$form->addInteger('range', 'Up to eleven?')->setHtmlType('range');
+		if ($this->showBulky) {
+			$form->addMultiSelect('multi_select', 'MultiSelect', ['A', 'B', 'C']);
+		}
 		$form->addPassword('password', 'Password');
 		$form->addRadioList('radio_list', 'RadioList', ['1', '2', '3']);
 		$form->addSelect('select', 'Select', ['Y', 'X', 'C']);
-		$form->addTextArea('textarea', 'Textarea');
+		if ($this->showBulky) {
+			$form->addTextArea('textarea', 'Textarea');
+		}
 		$form->addMultiUpload('multi_upload', 'MultiUpload');
 		$form->addSubmit('save', 'Send');
 		$form->addSubmit('secondary', 'Secondary');
@@ -48,6 +62,12 @@ class RenderersPresenter extends Presenter
 			$form->setRenderer(new Bs4FormRenderer(FormLayout::VERTICAL));
 		} elseif ($this->renderer === 'bs4i') {
 			$form->setRenderer(new Bs4FormRenderer(FormLayout::INLINE));
+		} elseif ($this->renderer === 'bs5h') {
+			$form->setRenderer(new Bs5FormRenderer(FormLayout::HORIZONTAL));
+		} elseif ($this->renderer === 'bs5v') {
+			$form->setRenderer(new Bs5FormRenderer(FormLayout::VERTICAL));
+		} elseif ($this->renderer === 'bs5i') {
+			$form->setRenderer(new Bs5FormRenderer(FormLayout::INLINE));
 		}
 
 		$form->onSuccess[] = function ($form, $values) {
