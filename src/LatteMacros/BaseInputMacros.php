@@ -19,6 +19,13 @@ use Nette\Utils\Html;
 use Nextras;
 
 
+/**
+ * Latte macros for Nette\Forms.
+ * Latte v2 macros for Nette\Forms.
+ *
+ * - {input name}
+ * - {label name /} or {label name}... {/label}
+ */
 abstract class BaseInputMacros extends MacroSet
 {
 	/**
