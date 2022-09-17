@@ -12,7 +12,7 @@ Form renderers:
 - *Bs4Renderer* - renderer for Bootstrap 4 with support for horizontal, vertial and inline mode;
 - *Bs5Renderer* - renderer for Bootstrap 5 with support for horizontal, vertial and inline mode;
 
-Latte Macros renderers:
+Latte Macros renderers (only for Latte 2):
 - *Bs3InputMacros* - modifies Form Macros to add Bootstrap 3 classes automatically;
 
 ### Installation
@@ -23,7 +23,7 @@ The best way to install is using [Composer](http://getcomposer.org/):
 $ composer require nextras/forms-rendering
 ```
 
-Register Bs3InputMacros using Nette DI config:
+Register Bs3InputMacros using Nette DI config (only for Latte 2):
 
 ```yaml
 latte:
