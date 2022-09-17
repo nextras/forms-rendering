@@ -9,9 +9,9 @@
 
 namespace Nextras\FormsRendering\Renderers;
 
+use Nette\Forms\Control;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
-use Nette\Forms\IControl;
 use Nette\Forms\Rendering\DefaultFormRenderer;
 use Nette\Utils\Html;
 
@@ -21,7 +21,7 @@ use Nette\Utils\Html;
  */
 class Bs3FormRenderer extends DefaultFormRenderer
 {
-	/** @var Controls\Button */
+	/** @var Controls\Button|null */
 	public $primaryButton = null;
 
 	/** @var bool */
@@ -80,7 +80,7 @@ class Bs3FormRenderer extends DefaultFormRenderer
 	}
 
 
-	public function renderPair(IControl $control): string
+	public function renderPair(Control $control): string
 	{
 		$this->controlsInit();
 		return parent::renderPair($control);
@@ -94,21 +94,21 @@ class Bs3FormRenderer extends DefaultFormRenderer
 	}
 
 
-	public function renderLabel(IControl $control): Html
+	public function renderLabel(Control $control): Html
 	{
 		$this->controlsInit();
 		return parent::renderLabel($control);
 	}
 
 
-	public function renderControl(IControl $control): Html
+	public function renderControl(Control $control): Html
 	{
 		$this->controlsInit();
 		return parent::renderControl($control);
 	}
 
 
-	private function controlsInit()
+	private function controlsInit(): void
 	{
 		if ($this->controlsInit) {
 			return;
@@ -130,7 +130,7 @@ class Bs3FormRenderer extends DefaultFormRenderer
 				$control->getControlPrototype()->addClass('form-control');
 			} elseif ($control instanceof Controls\Checkbox || $control instanceof Controls\CheckboxList || $control instanceof Controls\RadioList) {
 				if ($control instanceof Controls\Checkbox) {
-					$control->getSeparatorPrototype()->setName('div')->appendAttribute('class', $control->getControlPrototype()->type);
+					$control->getContainerPrototype()->setName('div')->appendAttribute('class', $control->getControlPrototype()->type);
 				} else {
 					$control->getItemLabelPrototype()->addClass($control->getControlPrototype()->type . '-inline');
 				}
