@@ -9,9 +9,9 @@
 
 namespace Nextras\FormsRendering\Renderers;
 
+use Nette\Forms\Control;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
-use Nette\Forms\IControl;
 use Nette\Forms\Rendering\DefaultFormRenderer;
 use Nette\Utils\Html;
 
@@ -21,7 +21,7 @@ use Nette\Utils\Html;
  */
 class Bs4FormRenderer extends DefaultFormRenderer
 {
-	/** @var Controls\Button */
+	/** @var Controls\Button|null */
 	public $primaryButton;
 
 	/** @var bool */
@@ -31,7 +31,10 @@ class Bs4FormRenderer extends DefaultFormRenderer
 	private $layout;
 
 
-	public function __construct($layout = FormLayout::HORIZONTAL)
+	/**
+	 * @param FormLayout::* $layout
+	 */
+	public function __construct(string $layout = FormLayout::HORIZONTAL)
 	{
 		$this->layout = $layout;
 
@@ -98,7 +101,7 @@ class Bs4FormRenderer extends DefaultFormRenderer
 	}
 
 
-	public function renderPair(IControl $control): string
+	public function renderPair(Control $control): string
 	{
 		$this->controlsInit();
 		return parent::renderPair($control);
@@ -112,21 +115,21 @@ class Bs4FormRenderer extends DefaultFormRenderer
 	}
 
 
-	public function renderLabel(IControl $control): Html
+	public function renderLabel(Control $control): Html
 	{
 		$this->controlsInit();
 		return parent::renderLabel($control);
 	}
 
 
-	public function renderControl(IControl $control): Html
+	public function renderControl(Control $control): Html
 	{
 		$this->controlsInit();
 		return parent::renderControl($control);
 	}
 
 
-	private function controlsInit()
+	private function controlsInit(): void
 	{
 		if ($this->controlsInit) {
 			return;

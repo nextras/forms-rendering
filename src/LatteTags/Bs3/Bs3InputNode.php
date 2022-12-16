@@ -7,27 +7,17 @@
  * @link       https://github.com/nextras/forms-rendering
  */
 
-namespace Nextras\FormsRendering\LatteMacros;
+namespace Nextras\FormsRendering\LatteTags\Bs3;
 
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\CheckboxList;
 use Nette\Forms\Controls\RadioList;
 use Nette\Utils\Html;
-use Nextras;
+use Nextras\FormsRendering\LatteTags\InputNode as BaseInputNode;
 
 
-class Bs3InputMacros extends BaseInputMacros
+class Bs3InputNode extends BaseInputNode
 {
-	public static function label(Html $label, BaseControl $control, bool $isSubItem): Html
-	{
-		if ($label->getName() === 'label' && !$isSubItem) {
-			$label->addClass('control-label');
-		}
-
-		return $label;
-	}
-
-
 	public static function input(Html $input, BaseControl $control, bool $isSubItem): Html
 	{
 		static $inputControls = ['radio', 'checkbox', 'file', 'hidden', 'range', 'image', 'submit', 'reset'];
