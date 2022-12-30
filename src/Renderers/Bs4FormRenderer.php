@@ -14,6 +14,7 @@ use Nette\Forms\Controls;
 use Nette\Forms\Form;
 use Nette\Forms\Rendering\DefaultFormRenderer;
 use Nette\Utils\Html;
+use Nette\Utils\Strings;
 
 
 /**
@@ -147,13 +148,18 @@ class Bs4FormRenderer extends DefaultFormRenderer
 			}
 
 			if ($control instanceof Controls\Button) {
-				$markAsPrimary = $control === $this->primaryButton || (!isset($this->primaryButton) && empty($usedPrimary) && $control->parent instanceof Form);
-				if ($markAsPrimary) {
+				if ($control->controlPrototype->class === null || (is_array($control->controlPrototype->class) && !Strings::contains(implode(' ', array_keys($control->controlPrototype->class)), 'btn btn-'))) {
+				    $markAsPrimary = $control === $this->primaryButton || (!isset($this->primaryButton) && empty($usedPrimary) && $control->parent instanceof Form);
+				    if ($markAsPrimary) {
 					$class = 'btn btn-primary';
 					$usedPrimary = true;
-				} else {
+				    } else {
 					$class = 'btn btn-secondary';
+				    }
+				} else {
+				    $class = '';
 				}
+				
 				$control->getControlPrototype()
 					->addClass($class)
 					->appendAttribute('class', 'mb-2 mr-sm-2', $this->layout === FormLayout::INLINE);
