@@ -22,14 +22,14 @@ abstract class LabelNode extends NetteLabelNode
 	{
 		return $context->format(
 			($this->name instanceof StringNode
-				? 'if ($ʟ_label = end($this->global->formsStack)[%node]->'
+				? 'if ($ʟ_label = ($ʟ_input = end($this->global->formsStack)[%node])->'
 				: '$ʟ_input = is_object($ʟ_tmp = %node) ? $ʟ_tmp : end($this->global->formsStack)[$ʟ_tmp]; if ($ʟ_label = $ʟ_input->')
 			. ($this->part ? ('getLabelPart(%node)') : 'getLabel()')
-			. ') echo ' . get_class() . '::label($ʟ_label'
+			. ') echo ' . static::class . '::label($ʟ_label'
 			. ($this->attributes->items ? '->addAttributes(%2.node)' : '')
-			. ($this->void ? ' %3.line, $ʟ_label, %2.var);' : '->startTag() %3.line, $ʟ_label, %2.var); %4.node if ($ʟ_label) echo $ʟ_label->endTag() %5.line;'),
+			. ($this->void ? ' %3.line, $ʟ_input, %1.dump);' : '->startTag() %3.line, $ʟ_input, %1.dump); %4.node if ($ʟ_label) echo $ʟ_label->endTag() %5.line;'),
 			$this->name,
-			$this->part,
+			$this->part !== null,
 			$this->attributes,
 			$this->position,
 			$this->content,

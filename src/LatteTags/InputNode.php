@@ -20,16 +20,16 @@ abstract class InputNode extends NetteInputNode
 {
 	public function print(PrintContext $context): string
 	{
-		$class = get_class();
+		$class = static::class;
 		return $context->format(
 			($this->name instanceof StringNode
 				? '$ʟ_input = end($this->global->formsStack)[%node]; echo ' . $class . '::input($ʟ_input->'
 				: '$ʟ_input = is_object($ʟ_tmp = %node) ? $ʟ_tmp : end($this->global->formsStack)[$ʟ_tmp]; echo ' . $class . '::input($ʟ_input->')
 			. ($this->part ? ('getControlPart(%node)') : 'getControl()')
 			. ($this->attributes->items ? '->addAttributes(%2.node)' : '')
-			. ' %3.line, $ʟ_input, %2.var);',
+			. ' %3.line, $ʟ_input, %1.dump);',
 			$this->name,
-			$this->part,
+			$this->part !== null,
 			$this->attributes,
 			$this->position,
 		);
