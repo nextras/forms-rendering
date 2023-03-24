@@ -14,7 +14,7 @@
 		"php": ">=8.0",
 		"latte/latte": "^3.0",
 		"nette/forms": "^3.0",
-		"nette/utils": "^3.0"
+		"nette/utils": "^3.0 || ^4.0"
 	},
 	"require-dev": {
 		"nette/application": "^3.0",
