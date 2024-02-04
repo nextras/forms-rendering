@@ -4,8 +4,9 @@ application:
 		*: NextrasDemos\FormsRendering\LatteMacros\*Module\*Presenter
 
 latte:
-	macros:
-		- Nextras\FormsRendering\LatteMacros\Bs3InputMacros::install
+	extensions:
+		- Nextras\FormsRendering\LatteTags\Bs3\Bs3FormsExtension
+
 
 services:
 	routing.router: Nette\Application\Routers\SimpleRouter('LatteMacros:default')

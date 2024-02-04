@@ -17,8 +17,8 @@ class Bs3FormsExtension extends Extension
 	public function getTags(): array
 	{
 		return [
-			'label' => [Bs3LabelNode::class, 'create'],
-			'input' => [Bs3InputNode::class, 'create'],
+			'bsLabel' => [Bs3LabelNode::class, 'create'],
+			'bsInput' => [Bs3InputNode::class, 'create'],
 		];
 	}
 }
