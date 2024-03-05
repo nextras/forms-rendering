@@ -67,6 +67,8 @@ class Bs5FormRenderer extends DefaultFormRenderer
 
 	public function render(Form $form, string $mode = null): string
 	{
+		parent::render($form, $mode);
+		
 		if ($this->form !== $form) {
 			$this->controlsInit = false;
 		}
