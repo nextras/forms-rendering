@@ -63,7 +63,7 @@ class Bs4FormRenderer extends DefaultFormRenderer
 	}
 
 
-	public function render(Form $form, string $mode = null): string
+	public function render(Form $form, ?string $mode = null): string
 	{
 		if (!isset($this->form) || $this->form !== $form) {
 			$this->controlsInit = false;
