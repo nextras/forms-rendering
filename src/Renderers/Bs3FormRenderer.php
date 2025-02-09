@@ -9,7 +9,9 @@
 
 namespace Nextras\FormsRendering\Renderers;
 
+use Nette\Forms\Container;
 use Nette\Forms\Control;
+use Nette\Forms\ControlGroup;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
 use Nette\Forms\Rendering\DefaultFormRenderer;
@@ -73,6 +75,9 @@ class Bs3FormRenderer extends DefaultFormRenderer
 	}
 
 
+	/**
+	 * @param Container|ControlGroup $parent
+	 */
 	public function renderControls($parent): string
 	{
 		$this->controlsInit();
