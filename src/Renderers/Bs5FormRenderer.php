@@ -9,7 +9,9 @@
 
 namespace Nextras\FormsRendering\Renderers;
 
+use Nette\Forms\Container;
 use Nette\Forms\Control;
+use Nette\Forms\ControlGroup;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
 use Nette\Forms\Rendering\DefaultFormRenderer;
@@ -65,7 +67,7 @@ class Bs5FormRenderer extends DefaultFormRenderer
 	}
 
 
-	public function render(Form $form, string $mode = null): string
+	public function render(Form $form, ?string $mode = null): string
 	{
 		if (!isset($this->form) || $this->form !== $form) {
 			$this->controlsInit = false;
@@ -95,7 +97,9 @@ class Bs5FormRenderer extends DefaultFormRenderer
 		return parent::renderBody();
 	}
 
-
+	/**
+	 * @param Container|ControlGroup $parent
+	 */
 	public function renderControls($parent): string
 	{
 		$this->controlsInit();
