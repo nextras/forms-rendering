@@ -22,15 +22,15 @@ abstract class InputNode extends NetteInputNode
 	{
 		$class = static::class;
 		return $context->format(
-			($this->name instanceof StringNode
-				? '$ʟ_input = end($this->global->formsStack)[%node]; echo ' . $class . '::input($ʟ_input->'
-				: '$ʟ_input = is_object($ʟ_tmp = %node) ? $ʟ_tmp : end($this->global->formsStack)[$ʟ_tmp]; echo ' . $class . '::input($ʟ_input->')
+			'$ʟ_input = Nette\Bridges\FormsLatte\Runtime::item(%node, $this->global);'
+			. 'echo ' . $class . '::input($ʟ_input->'
 			. ($this->part ? ('getControlPart(%node)') : 'getControl()')
 			. ($this->attributes->items ? '->addAttributes(%2.node)' : '')
-			. ' %3.line, $ʟ_input, %1.dump);',
+			. ' , $ʟ_input, %3.dump) %4.line;',
 			$this->name,
-			$this->part !== null,
+			$this->part,
 			$this->attributes,
+			$this->part != null,
 			$this->position,
 		);
 	}
