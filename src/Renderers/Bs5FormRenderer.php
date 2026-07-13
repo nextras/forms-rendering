@@ -176,7 +176,7 @@ class Bs5FormRenderer extends DefaultFormRenderer
 
 			if ($control instanceof Controls\Button) {
 				// Mark first form button (or the one provided) as primary.
-				$markAsPrimary = $control === $this->primaryButton || (!isset($this->primaryButton) && $control->parent instanceof Form);
+				$markAsPrimary = $control === $this->primaryButton || (!isset($this->primaryButton) && $control->getParent() instanceof Form);
 				if ($markAsPrimary) {
 					$class = 'btn btn-primary';
 					$this->primaryButton = $control;

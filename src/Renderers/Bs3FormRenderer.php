@@ -123,7 +123,7 @@ class Bs3FormRenderer extends DefaultFormRenderer
 		$this->form->getElementPrototype()->addClass('form-horizontal');
 		foreach ($this->form->getControls() as $control) {
 			if ($control instanceof Controls\Button) {
-				$markAsPrimary = $control === $this->primaryButton || (!isset($this->primaryButton) && empty($usedPrimary) && $control->parent instanceof Form);
+				$markAsPrimary = $control === $this->primaryButton || (!isset($this->primaryButton) && empty($usedPrimary) && $control->getParent() instanceof Form);
 				if ($markAsPrimary) {
 					$class = 'btn btn-primary';
 					$usedPrimary = true;
