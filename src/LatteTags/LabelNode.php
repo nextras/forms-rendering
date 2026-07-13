@@ -33,7 +33,8 @@ abstract class LabelNode extends NetteLabelNode
 			$this->attributes,
 			$this->position,
 			$this->content,
-			$this->endLine
+			// TODO: Drop the `endLine` support once we no longer support forms < 3.3.
+			property_exists($this, 'endLine') ? $this->endLine : end($this->tagRanges),
 		);
 	}
 

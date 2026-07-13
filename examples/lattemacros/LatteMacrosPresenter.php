@@ -8,12 +8,12 @@ use Nette\Application\UI\Presenter;
 
 class LatteMacrosPresenter extends Presenter
 {
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 	}
 
 
-	public function createComponentForm()
+	public function createComponentForm(): Form
 	{
 		$form = new Form();
 		$form->addText('text', 'Name');

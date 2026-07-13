@@ -1,7 +1,7 @@
 Nextras Forms Rendering
 =======================
 
-[![Build Status](https://travis-ci.org/nextras/forms-rendering.svg?branch=master)](https://travis-ci.org/nextras/forms-rendering)
+[![Build](https://github.com/nextras/forms-rendering/actions/workflows/build.yaml/badge.svg)](https://github.com/nextras/forms-rendering/actions/workflows/build.yaml)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nextras/forms-rendering.svg?style=flat)](https://packagist.org/packages/nextras/forms-rendering)
 [![Stable version](http://img.shields.io/packagist/v/nextras/forms-rendering.svg?style=flat)](https://packagist.org/packages/nextras/forms-rendering)
 

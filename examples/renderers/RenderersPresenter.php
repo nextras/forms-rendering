@@ -25,14 +25,14 @@ class RenderersPresenter extends Presenter
 	public $showBulky = true;
 
 
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 		$this->template->renderer = $this->renderer;
 		$this->template->showBulky = $this->showBulky;
 	}
 
 
-	public function createComponentForm()
+	public function createComponentForm(): Form
 	{
 		$form = new Form();
 		$form->addText('text', 'Name');
