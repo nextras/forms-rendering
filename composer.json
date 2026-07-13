@@ -35,6 +35,9 @@
 	"autoload": {
 		"psr-4": { "Nextras\\FormsRendering\\": "src/" }
 	},
+	"scripts": {
+		"phpstan": "phpstan analyze"
+	},
 	"autoload-dev": {
 		"psr-4": {
 			"NextrasDemos\\FormsRendering\\LatteMacros\\": "examples/lattemacros/",
