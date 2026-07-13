@@ -3,7 +3,7 @@ includes:
 	- vendor/phpstan/phpstan-nette/rules.neon
 
 parameters:
-	level: 7
+	level: max
 	paths:
 		- src
 		- examples
