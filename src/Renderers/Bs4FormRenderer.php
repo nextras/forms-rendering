@@ -147,7 +147,7 @@ class Bs4FormRenderer extends DefaultFormRenderer
 		}
 
 		foreach ($this->form->getControls() as $control) {
-			if ($this->layout === FormLayout::INLINE && !$control instanceof Controls\Checkbox) {
+			if ($this->layout === FormLayout::INLINE && !$control instanceof Controls\Checkbox && method_exists($control, 'getLabelPrototype')) {
 				$control->getLabelPrototype()->addClass('my-1')->addClass('mr-2');
 			}
 

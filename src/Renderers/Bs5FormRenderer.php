@@ -151,13 +151,13 @@ class Bs5FormRenderer extends DefaultFormRenderer
 		}
 
 		foreach ($this->form->getControls() as $control) {
-			if ($this->layout === FormLayout::INLINE) {
+			if ($this->layout === FormLayout::INLINE && method_exists($control, 'getLabelPrototype')) {
 				// Unfortunately, the aforementioned solution does not seem to expect labels
 				// so we need to add some hacks. Notably, `.form-control`, `.form-select` and
 				// others add `display: block`, forcing the control onto a next line.
 				// The checkboxes are exception since they have their own inline class.
 
-				if (!$control instanceof Controls\Checkbox && !$control instanceof Controls\CheckboxList && !$control instanceof Controls\RadioList) {
+				if (!$control instanceof Controls\Checkbox && !$control instanceof Controls\CheckboxList && !$control instanceof Controls\RadioList && method_exists($control, 'getControlPrototype')) {
 					$control->getControlPrototype()->addClass('d-inline-block');
 
 					// But setting `display: inline-block` is not enough since the widgets will inherit
