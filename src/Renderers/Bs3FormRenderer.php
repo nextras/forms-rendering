@@ -137,7 +137,11 @@ class Bs3FormRenderer extends DefaultFormRenderer
 				if ($control instanceof Controls\Checkbox) {
 					$control->getContainerPrototype()->setName('div')->appendAttribute('class', $control->getControlPrototype()->type);
 				} else {
-					$control->getItemLabelPrototype()->addClass($control->getControlPrototype()->type . '-inline');
+					$type = $control->getControlPrototype()->type;
+					// For PHPStan: Both control types initialize it to constructor in string.
+					\assert(is_string($type));
+
+					$control->getItemLabelPrototype()->addClass($type . '-inline');
 				}
 			}
 		}
