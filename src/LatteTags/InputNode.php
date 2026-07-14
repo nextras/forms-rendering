@@ -21,8 +21,10 @@ abstract class InputNode extends NetteInputNode
 	public function print(PrintContext $context): string
 	{
 		$class = static::class;
+		$hasForms33 = method_exists(\Nette\Bridges\FormsLatte\Runtime::class, 'renderFormBegin');
+		$input = $hasForms33 ? 'Nette\Bridges\FormsLatte\Runtime::item(%node, $this->global)' : '$this->global->forms->get(%node);';
 		return $context->format(
-			'$ʟ_input = Nette\Bridges\FormsLatte\Runtime::item(%node, $this->global);'
+			'$ʟ_input = ' . $input
 			. 'echo ' . $class . '::input($ʟ_input->'
 			. ($this->part ? ('getControlPart(%node)') : 'getControl()')
 			. ($this->attributes->items ? '->addAttributes(%2.node)' : '')

@@ -12,3 +12,9 @@ parameters:
 		- examples/**/log/*
 		- examples/**/temp/*
 
+	ignoreErrors:
+		-
+			message: '#^Call to function method_exists\(\) with ''Nette\\\\Bridges\\\\FormsLatte\\\\Runtime'' and ''renderFormBegin'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			reportUnmatched: false
+			path: src/LatteTags/InputNode.php
