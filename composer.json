@@ -20,8 +20,8 @@
 		"nette/application": "^3.0",
 		"nette/bootstrap": "^3.0",
 		"nette/di": "^3.0",
-		"phpstan/phpstan": "~1.8",
-		"phpstan/phpstan-nette": "~1.0",
+		"phpstan/phpstan": "^2.2",
+		"phpstan/phpstan-nette": "^2.0",
 		"tracy/tracy": "^2.5"
 	},
 	"extra": {
