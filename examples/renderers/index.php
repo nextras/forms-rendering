@@ -3,13 +3,13 @@
 namespace NextrasDemos\FormsRendering\Renderers;
 
 use Nette\Application\Application;
-use Nette\Configurator;
+use Nette\Bootstrap\Configurator;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 
 $configurator = new Configurator;
-$configurator->enableDebugger(__DIR__ . '/log');
+$configurator->enableTracy(__DIR__ . '/log');
 $configurator->setTempDirectory(__DIR__ . '/temp');
 $configurator->addConfig(__DIR__ . '/config.neon');
 
