@@ -170,7 +170,8 @@ class Bs4FormRenderer extends DefaultFormRenderer
 			} elseif ($control instanceof Controls\Checkbox || $control instanceof Controls\CheckboxList || $control instanceof Controls\RadioList) {
 				$control->getControlPrototype()->addClass('form-check-input');
 
-				$control->getSeparatorPrototype()
+				$wrapper = $control instanceof Controls\Checkbox ? $control->getContainerPrototype() : $control->getSeparatorPrototype();
+				$wrapper
 					->setName('div')
 					->appendAttribute('class', 'form-check')
 					->appendAttribute('class', 'form-check-inline', $this->layout == FormLayout::INLINE);

@@ -210,7 +210,8 @@ class Bs5FormRenderer extends DefaultFormRenderer
 				$control->getControlPrototype()->addClass('form-check-input');
 
 				// They also need to be individually wrapped in `div.form-check`.
-				$control->getSeparatorPrototype()
+				$wrapper = $control instanceof Controls\Checkbox ? $control->getContainerPrototype() : $control->getSeparatorPrototype();
+				$wrapper
 					->setName('div')
 					->appendAttribute('class', 'form-check')
 					// They support being displayed inline with `.form-check-inline`.
