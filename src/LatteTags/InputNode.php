@@ -9,7 +9,6 @@
 
 namespace Nextras\FormsRendering\LatteTags;
 
-use Latte\Compiler\Nodes\Php\Scalar\StringNode;
 use Latte\Compiler\PrintContext;
 use Nette\Bridges\FormsLatte\Nodes\InputNode as NetteInputNode;
 use Nette\Forms\Controls\BaseControl;
