@@ -42,6 +42,10 @@
 		"psr-4": {
 			"NextrasDemos\\FormsRendering\\LatteMacros\\": "examples/lattemacros/",
 			"NextrasDemos\\FormsRendering\\Renderers\\": "examples/renderers/"
-		}
+		},
+		"exclude-from-classmap": [
+			"examples/lattemacros/temp/",
+			"examples/renderers/temp/"
+		]
 	}
 }
