@@ -29,7 +29,8 @@ class Bs3InputNode extends BaseInputNode
 			($name === 'input' && !in_array($input->type, self::INPUT_CONTROLS, true))
 		) {
 			$input->addClass('form-control');
-		} elseif ($name === 'input' && ($input->type === 'submit' || $input->type === 'reset')) {
+		} elseif ($name === 'input' && ($input->type === 'submit' || $input->type === 'reset') && is_string($input->value)) {
+			// is_string above is needed by PHPStan since phpstan-nette claims all properties are mixed.
 			$input->setName('button');
 			$input->addHtml($input->value);
 			$input->addClass('btn');
