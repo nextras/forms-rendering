@@ -158,20 +158,26 @@ class Bs5FormRenderer extends DefaultFormRenderer
 				// The checkboxes are exception since they have their own inline class.
 
 				if (!$control instanceof Controls\Checkbox && !$control instanceof Controls\CheckboxList && !$control instanceof Controls\RadioList && method_exists($control, 'getControlPrototype')) {
-					$control->getControlPrototype()->addClass('d-inline-block');
+					$controlPrototype = $control->getControlPrototype();
+					\assert($controlPrototype instanceof Html); // For PHPStan
+
+					$controlPrototype->addClass('d-inline-block');
 
 					// But setting `display: inline-block` is not enough since the widgets will inherit
 					// `width: 100%` from `.form-control` and end up wrapped anyway.
 					// Let’s counter that using `width: auto`.
-					$control->getControlPrototype()->addClass('w-auto');
+					$controlPrototype->addClass('w-auto');
 					if ($control instanceof Controls\TextBase && $control->control->type === 'color') {
 						// `input[type=color]` is a special case since `width: auto` would make it squish.
-						$control->getControlPrototype()->addStyle('min-width', '3rem');
+						$controlPrototype->addStyle('min-width', '3rem');
 					}
 				}
 
+				$labelPrototype = $control->getLabelPrototype();
+				\assert($labelPrototype instanceof Html); // For PHPStan
+
 				// Also, we need to add some spacing between the label and the control.
-				$control->getLabelPrototype()->addClass('me-2');
+				$labelPrototype->addClass('me-2');
 			}
 
 			if ($control instanceof Controls\Button) {
@@ -204,7 +210,8 @@ class Bs5FormRenderer extends DefaultFormRenderer
 				$control->getControlPrototype()->addClass('form-check-input');
 
 				// They also need to be individually wrapped in `div.form-check`.
-				$control->getSeparatorPrototype()
+				$wrapper = $control instanceof Controls\Checkbox ? $control->getContainerPrototype() : $control->getSeparatorPrototype();
+				$wrapper
 					->setName('div')
 					->appendAttribute('class', 'form-check')
 					// They support being displayed inline with `.form-check-inline`.

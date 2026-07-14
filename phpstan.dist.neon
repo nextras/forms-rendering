@@ -1,4 +1,5 @@
 includes:
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
 	- vendor/phpstan/phpstan-nette/extension.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
 
@@ -7,3 +8,14 @@ parameters:
 	paths:
 		- src
 		- examples
+
+	excludePaths:
+		- examples/**/log/*
+		- examples/**/temp/*
+
+	ignoreErrors:
+		-
+			message: '#^Call to function method_exists\(\) with ''Nette\\\\Bridges\\\\FormsLatte\\\\Runtime'' and ''renderFormBegin'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			reportUnmatched: false
+			path: src/LatteTags/InputNode.php

@@ -16,6 +16,13 @@ use Nette\Forms\Controls\BaseControl;
 use Nette\Utils\Html;
 
 
+/**
+ * These are fake properties to satisfy PHPStan, at least one of them
+ * should exist depending on the versions of installed dependencies.
+ * TODO: Drop these once we no longer support forms < 3.3.
+ * @property-read array<mixed> $tagRanges
+ * @property-read mixed $endLine
+ */
 abstract class LabelNode extends NetteLabelNode
 {
 	public function print(PrintContext $context): string
@@ -34,7 +41,7 @@ abstract class LabelNode extends NetteLabelNode
 			$this->position,
 			$this->content,
 			// TODO: Drop the `endLine` support once we no longer support forms < 3.3.
-			property_exists($this, 'endLine') ? $this->endLine : end($this->tagRanges),
+			isset($this->endLine) ? $this->endLine : end($this->tagRanges),
 		);
 	}
 
